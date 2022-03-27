@@ -20,3 +20,13 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::group([
+        'prefix' => 'admin',
+        'middleware' => 'is_admin',
+        'as' => 'admin.',
+    ], function() {
+        Route::get('products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('products.index');
+    });
+});
