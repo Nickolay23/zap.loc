@@ -28,6 +28,6 @@ Route::group(['middleware' => 'auth'], function() {
         'middleware' => 'is_admin',
         'as' => 'admin.',
     ], function() {
-        Route::get('products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('products.index');
+        // Route::get('products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('products.index');
     });
 });

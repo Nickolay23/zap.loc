@@ -15,11 +15,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    @if (auth()->user()->is_admin)
+                    <!-- @if (auth()->user()->is_admin)
                         <x-jet-nav-link href="{{ route('admin.products.index')}}" :active="request()->routeIs('admin.products.index')">
                             Товары
                         </x-jet-nav-link>
-                    @endif
+                    @endif -->
                 </div>
             </div>
 
