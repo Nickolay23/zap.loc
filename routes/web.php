@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//  Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//      return view('dashboard');
+//  })->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group([
@@ -28,6 +28,10 @@ Route::group(['middleware' => 'auth'], function() {
         'middleware' => 'is_admin',
         'as' => 'admin.',
     ], function() {
+        Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
         Route::get('products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('products.index');
+    });
+    Route::group(['as' => 'profile.'], function() {
+        Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
     });
 });

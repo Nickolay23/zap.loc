@@ -23,6 +23,6 @@ class AdminLayout extends Component
      */
     public function render()
     {
-        return view('layout.admin');
+        return view('layouts.admin');
     }
 }
